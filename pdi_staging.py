@@ -154,3 +154,7 @@ stat = Extract(artist,genre,category,title,n,non_latin_list)
 print(len(scores))
 # Length of scores list has reduced from 1833 to 729.
 
+for ele1,ele2 in zip(range(0,len(scores),3),range(1,len(scores),3)):
+    print(f" {stat[scores[ele1]]} | {stat[scores[ele2]]}")
+
+
