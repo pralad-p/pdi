@@ -154,31 +154,3 @@ stat = Extract(artist,genre,category,title,n,non_latin_list)
 print(len(scores))
 # Length of scores list has reduced from 1833 to 729.
 
-
-# Used to find how many discs have the same multi. attributes within a single CD.
-
-# attridict = {"artist":0,"title":0,"cat":0,"genre":0,"Year":0}
-# for i in range(n):
-#     if len(disc_list[i].artist) > 1:
-#         attridict["artist"] += 1
-#     if len(disc_list[i].dtitle) > 1:
-#         attridict["title"] += 1
-#     if len(disc_list[i].category) > 1:
-#         attridict["cat"] += 1
-#     try:
-#         if len(disc_list[i].genre) > 1:
-#             attridict["genre"] += 1
-#     except:
-#         continue
-#     try:
-#         if len(disc_list[i].year) > 1:
-#             attridict["Year"] += 1
-#     except:
-#         continue
-
-# print(f"Multiple artist ele. : {attridict['artist']}")
-# print(f"Multiple title ele. : {attridict['title']}")
-# print(f"Multiple cat ele. : {attridict['cat']}")
-# print(f"Multiple genre ele. : {attridict['genre']}")
-# print(f"Multiple year ele. : {attridict['Year']}")
-
