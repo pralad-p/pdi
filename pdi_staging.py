@@ -6,7 +6,7 @@ import untangle
 import string
 from fuzzywuzzy import fuzz
 import itertools
-from constant import scores
+from constant import *
 
 def Extract(a,g,cat,title,n,nlt_list):
     tot_string_list = []
@@ -151,10 +151,76 @@ stat = Extract(artist,genre,category,title,n,non_latin_list)
                 
 # print(scores)
 
-print(len(scores))
+# print(len(s1_scores))
 # Length of scores list has reduced from 1833 to 729.
 
-for ele1,ele2 in zip(range(0,len(scores),3),range(1,len(scores),3)):
-    print(f" {stat[scores[ele1]]} | {stat[scores[ele2]]}")
+s1_pairs = list()
+
+for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
+    # Debugging purposes : view the strings compared
+    #print(f" {stat[s1_scores[ele1]]} | {stat[s1_scores[ele2]]}")
+    temp_list = []
+    temp_list.append(s1_scores[ele1])
+    temp_list.append(s1_scores[ele2])
+    s1_pairs.append(temp_list)
+
+# Stage 1 scores 
+
+# print(s1_pairs)
+# print(len(s1_pairs))
+
+# Do the FuzzyWuzzy for the tracks comparing 1st ele. of each list in 
+# s1_pairs to 2nd ele. in s1_pairs.
+
+# For PP - how to iterate
+# print(s1_pairs[0:5])
+# for ele in zip(range(5),s1_pairs):
+#     print(ele[1][0])
+
+# Get the conce. strings for tracks to do the matching
+# iterated = set()
+# for ele in s1_pairs:
+#     for index in ele:
+#         iterated.add(index)
+
+# print(len(iterated))    # is 399
+# Compare tracks (had to be run only once)
+# n_tracks_1 = 0
+# n_tracks_2 = 0
+# s2_scores = []
+# for i,j in s1_pairs:
+#     n_tracks_1 = len(disc_for_tracks[i])
+#     n_tracks_2 = len(disc_for_tracks[j])
+#     indv_scores = []
+#     max_ratio = 0
+#     for l in range(n_tracks_1):
+#         for m in range(n_tracks_2):
+#             ratio = fuzz.token_sort_ratio(disc_for_tracks[i][l].lower(),disc_for_tracks[j][m].lower())
+#             indv_scores.append(ratio)
+#             if(l==(n_tracks_1-1) and m == (n_tracks_2-1)):
+#                 max_ratio = max(indv_scores)
+#                 if max_ratio > 80:
+#                     s2_scores.append(i)
+#                     s2_scores.append(j)
+#                     s2_scores.append(max_ratio)
+
+for ele1,ele2 in zip(disc_for_tracks[1988],disc_for_tracks[7093]):
+    print(f"{ele1} | {ele2} ")
 
 
+
+# Get the [s2] scores - only once
+# s2_scores =[]
+# for i in range(len(stat)):
+#     for j in range(i + 1, len(stat)):
+#         if i in non_latin_list or j in non_latin_list:
+#             continue
+#         else:
+#             ratio = fuzz.token_sort_ratio(stat[i].lower(),stat[j].lower())
+#             if ratio > 80:
+#                 s2_scores.append(i)
+#                 s2_scores.append(j)
+#                 s2_scores.append(ratio)
+                
+# print(len(s2_scores))
+# With threshold at 80, gives us 147 confirmed records.
