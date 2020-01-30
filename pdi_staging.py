@@ -184,7 +184,7 @@ for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
 #         iterated.add(index)
 
 # print(len(iterated))    # is 399
-# Compare tracks (had to be run only once)
+# Compare tracks based on part 1 (had to be run only once)
 # n_tracks_1 = 0
 # n_tracks_2 = 0
 # s2_scores = []
@@ -204,8 +204,31 @@ for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
 #                     s2_scores.append(j)
 #                     s2_scores.append(max_ratio)
 
-for ele1,ele2 in zip(disc_for_tracks[1988],disc_for_tracks[7093]):
-    print(f"{ele1} | {ele2} ")
+# Compare tracks completely with brute force (TOO MUCH TIME- TRY AT NIGHT) (had to be run only once)
+# n_tracks_1 = 0
+# n_tracks_2 = 0
+# s2_scores = []
+# for i in range(0,n-1):
+#     for j in range(i,n):
+#         n_tracks_1 = len(disc_for_tracks[i])
+#         n_tracks_2 = len(disc_for_tracks[j])
+#         indv_scores = []
+#         max_ratio = 0
+#         for l in range(n_tracks_1):
+#             for m in range(n_tracks_2):
+#                 ratio = fuzz.token_sort_ratio(disc_for_tracks[i][l].lower(),disc_for_tracks[j][m].lower())
+#                 indv_scores.append(ratio)
+#                 if(l==(n_tracks_1-1) and m == (n_tracks_2-1)):
+#                     max_ratio = max(indv_scores)
+#                     if max_ratio > 80:
+#                         s2_scores.append(i)
+#                         s2_scores.append(j)
+#                         s2_scores.append(max_ratio)
+
+# print(s2_scores)
+# Diagonistic check
+# for ele1,ele2 in zip(disc_for_tracks[2873],disc_for_tracks[3947]):
+#     print(f"{ele1} | {ele2} ")
 
 
 
