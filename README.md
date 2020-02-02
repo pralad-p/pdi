@@ -7,5 +7,5 @@
 ## Things left to do 
 
 1. Compare whether each pair is present in the reference file.
-This is done for (80% threshold). Left to do for (70% threshold). 
+Checking completed for both thresholds. Results on ::stdout. 
 2.
