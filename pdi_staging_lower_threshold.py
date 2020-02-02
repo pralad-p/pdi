@@ -137,19 +137,19 @@ stat = Extract(artist,genre,category,title,n,non_latin_list)
 # print(len(stat))   
 
 # Get the scores - only once
-# scores =[]
-# for i in range(len(stat)):
-#     for j in range(i + 1, len(stat)):
-#         if i in non_latin_list or j in non_latin_list:
-#             continue
-#         else:
-#             ratio = fuzz.token_sort_ratio(stat[i].lower(),stat[j].lower())
-#             if ratio > 70:
-#                 scores.append(i)
-#                 scores.append(j)
-#                 scores.append(ratio)
+scores =[]
+for i in range(len(stat)):
+    for j in range(i + 1, len(stat)):
+        if i in non_latin_list or j in non_latin_list:
+            continue
+        else:
+            ratio = fuzz.token_sort_ratio(stat[i].lower(),stat[j].lower())
+            if ratio > 70:
+                scores.append(i)
+                scores.append(j)
+                scores.append(ratio)
                 
-# print(scores)
+print(len(scores))
 
 print(f"S1 Scores: {len(s1_scores)}")
 # Length of scores list has reduced from 1833 to 729.
@@ -248,37 +248,37 @@ for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
 
 
 # Working with reference duplicate files
-obj2 = untangle.parse("ref_dups.xml")
-titledups = []
-artistdups = []
-n2 = len(obj2.cddups.pair)
-# print(n2)
-multi_str = list()
+# obj2 = untangle.parse("ref_dups.xml")
+# titledups = []
+# artistdups = []
+# n2 = len(obj2.cddups.pair)
+# # print(n2)
+# multi_str = list()
 
-disc_list = obj2.cddups.pair
-for i in range(n2):
-    for j in range(2):
-        if len(disc_list[i].disc[j].artist) > 1:
-            temp = ""
-            for art in disc_list[i].disc[j].artist:
-                multi_str.append(art.cdata)
-            for ele in multi_str:
-                temp += str(ele)
-            artistdups.append(temp)
-            multi_str.clear()
-        else:
-            artistdups.append(str(disc_list[i].disc[j].artist.cdata))
-        if len(disc_list[i].disc[j].dtitle) > 1:
-            temp = ""
-            for tit in disc_list[i].disc[j].dtitle:
-                multi_str.append(tit.cdata)
-            for ele in multi_str:
-                temp += str(ele)
-            titledups.append(temp)
-            multi_str.clear()
-        else:
-            titledups.append(str(disc_list[i].disc[j].dtitle.cdata))
+# disc_list = obj2.cddups.pair
+# for i in range(n2):
+#     for j in range(2):
+#         if len(disc_list[i].disc[j].artist) > 1:
+#             temp = ""
+#             for art in disc_list[i].disc[j].artist:
+#                 multi_str.append(art.cdata)
+#             for ele in multi_str:
+#                 temp += str(ele)
+#             artistdups.append(temp)
+#             multi_str.clear()
+#         else:
+#             artistdups.append(str(disc_list[i].disc[j].artist.cdata))
+#         if len(disc_list[i].disc[j].dtitle) > 1:
+#             temp = ""
+#             for tit in disc_list[i].disc[j].dtitle:
+#                 multi_str.append(tit.cdata)
+#             for ele in multi_str:
+#                 temp += str(ele)
+#             titledups.append(temp)
+#             multi_str.clear()
+#         else:
+#             titledups.append(str(disc_list[i].disc[j].dtitle.cdata))
 
-print(f"Length of duplicate titles: {len(titledups)}")
-print(f"Length of duplicate artists: {len(artistdups)}")
+# print(f"Length of duplicate titles: {len(titledups)}")
+# print(f"Length of duplicate artists: {len(artistdups)}")
 
