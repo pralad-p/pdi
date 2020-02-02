@@ -312,4 +312,4 @@ for i in range(len(s1_songs)):
 
 print(f"For Stage 1: ")
 print(f"The correct duplicates are {correct} of number, out of a total of {len(artistdups)} ")
-print(f"Gives us the error of {((correct)/len(artistdups))*100} ")
+print(f"Gives us the success of {((correct)/len(artistdups))*100} ")
