@@ -154,6 +154,7 @@ stat = Extract(artist,genre,category,title,n,non_latin_list)
 # print(len(s1_scores))
 # Length of scores list has reduced from 1833 to 729.
 
+# Making pairs
 s1_pairs = list()
 
 for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
@@ -163,6 +164,21 @@ for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
     temp_list.append(s1_scores[ele1])
     temp_list.append(s1_scores[ele2])
     s1_pairs.append(temp_list)
+
+s2_pairs = list()
+
+for ele1,ele2 in zip(range(0,len(s2_scores),3),range(1,len(s2_scores),3)):
+    # Debugging purposes : view the strings compared
+    #print(f" {stat[s1_scores[ele1]]} | {stat[s1_scores[ele2]]}")
+    temp_list = []
+    temp_list.append(s2_scores[ele1])
+    temp_list.append(s2_scores[ele2])
+    s2_pairs.append(temp_list)
+
+# print(s2_pairs)
+# print(len(s2_pairs))
+
+
 
 # Stage 1 scores 
 
@@ -242,74 +258,3 @@ for ele1,ele2 in zip(range(0,len(s1_scores),3),range(1,len(s1_scores),3)):
 
 # print(len(s2_scores))
 # With threshold at 80, gives us 147 confirmed records.
-
-# Working with reference duplicate files
-obj2 = untangle.parse("ref_dups.xml")
-titledups = []
-artistdups = []
-n2 = len(obj2.cddups.pair)
-# print(n2)
-multi_str = list()
-
-disc_list = obj2.cddups.pair
-for i in range(n2):
-    for j in range(2):
-        if len(disc_list[i].disc[j].artist) > 1:
-            temp = ""
-            for art in disc_list[i].disc[j].artist:
-                multi_str.append(art.cdata)
-            for ele in multi_str:
-                temp += str(ele)
-            artistdups.append(temp)
-            multi_str.clear()
-        else:
-            artistdups.append(str(disc_list[i].disc[j].artist.cdata))
-        if len(disc_list[i].disc[j].dtitle) > 1:
-            temp = ""
-            for tit in disc_list[i].disc[j].dtitle:
-                multi_str.append(tit.cdata)
-            for ele in multi_str:
-                temp += str(ele)
-            titledups.append(temp)
-            multi_str.clear()
-        else:
-            titledups.append(str(disc_list[i].disc[j].dtitle.cdata))
-
-print(f"Length of duplicate titles: {len(titledups)}")
-print(f"Length of duplicate artists: {len(artistdups)}")
-
-
-# Checking if scored elements in dupl. file (error calculation):
-
-# for i in range(len(titledups)):
-    # print(f"Dup. Title: {titledups[i]} | Dup. Artist: {artistdups[i]}")
-
-
-# Stage 1
-correct = 0
-non_repeat = list()
-s1_songs = set()
-
-for ele in s1_pairs:
-    for e in ele:
-        s1_songs.add(e)
-
-s1_songs = list(s1_songs)
-repeat = []
-
-print(f"Length of all songs (should be 399), is: {len(s1_songs)}")
-titledups = list(set(titledups))
-print(len(titledups))
-for i in range(len(s1_songs)):
-    for k in range(len(titledups)):
-        if k not in repeat:
-            titledups[k] = titledups[k].lstrip().rstrip()
-            if title[s1_songs[i]]==titledups[k]:
-                correct += 1
-                print(True)
-                repeat.append(k)
-                
-
-print(f"For Stage 1: ")
-print(f"The correct duplicates are {correct} of number, out of a total of {len(artistdups)} ")
-print(f"Gives us the success of {((correct)/len(artistdups))*100} ")
