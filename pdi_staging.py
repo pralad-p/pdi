@@ -24,7 +24,7 @@ def Extract(a,g,cat,title,n,nlt_list):
     return tot_string_list 
 
 
-obj = untangle.parse("cddb_1000.xml")
+obj = untangle.parse("pdi/databases/cddb_1000.xml")
 artist = []
 title = []
 category =[]
@@ -258,3 +258,10 @@ for ele1,ele2 in zip(range(0,len(s2_scores),3),range(1,len(s2_scores),3)):
 
 # print(len(s2_scores))
 # With threshold at 80, gives us 147 confirmed records.
+rec1 = 382
+rec2 = 6265
+
+print(f"Artist 1: {artist[rec1]}  | Artist 2: {artist[rec2]} ")
+print(f"Title 1: {title[rec1]}  | Title 2: {title[rec2]} ")
+# print(f"Artist 1: {artist[rec1]}  | Artist 2: {artist[rec2]} ")
+# print(f"Artist 1: {artist[rec1]}  | Artist 2: {artist[rec2]} ")

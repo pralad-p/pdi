@@ -2,10 +2,10 @@
 
 ## Versions
 
+v 1.1: NP strings eliminated
+v 1.2: Scores available with optimum tracks left
+v 1.3: compared tracks and got new score.
+v 1.4: Brute-force technique tried.
+v 2.0: Worked with complete range of thresholds.
+v 3.0: Errors calculated with respect to reference file.
 
-
-## Things left to do 
-
-1. Compare whether each pair is present in the reference file.
-Checking completed for both thresholds. Results on ::stdout. 
-2.

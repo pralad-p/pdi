@@ -8,7 +8,7 @@ CEND = '\033[0m'
 
 
 
-obj2 = untangle.parse("ref_dups.xml")
+obj2 = untangle.parse("pdi/databases/ref_dups.xml")
 titlepairs = []
 n2 = len(obj2.cddups.pair)
 # print(n2)
