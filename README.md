@@ -9,3 +9,5 @@ v 1.4: Brute-force technique tried.\
 v 2.0: Worked with complete range of thresholds.\
 v 3.0: Errors calculated with respect to reference file.
 
+## Instructions to use
+1. Clone directory to your own machine.
