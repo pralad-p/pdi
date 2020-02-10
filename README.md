@@ -17,3 +17,7 @@ v 3.0: Errors calculated with respect to reference file.
 Eg. `python main.py 75`
 
 Not defining a threshold will run the program with the threshold of **80%**.
+
+# Authors
+* Bendik Benestad
+* Pralad Prasad
