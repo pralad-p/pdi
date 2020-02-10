@@ -18,6 +18,6 @@ Eg. `python main.py 75`
 
 Not defining a threshold will run the program with the threshold of **80%**.
 
-# Authors
+## Authors
 * Bendik Benestad
 * Pralad Prasad
